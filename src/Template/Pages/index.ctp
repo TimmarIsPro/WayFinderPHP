@@ -55,11 +55,18 @@ $cakeDescription = 'TAFE WayFinder';
         <li class="heading"><?= __('Events') ?></li>
 		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
         <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
-		<!-- entries within these comments probably need figuring out to get specific views -->
-		<li><?= $this->Html->link('View Events by Campus', ['controller'=>'events']); ?></li>
-		<li><?= $this->Html->link('View Unapproved Events', ['controller'=>'events']); ?></li>
-		<!-- entries end here -->
 
+        <li class="heading"><?= __('Campuses') ?></li>
+        <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
+
+        <li class="heading"><?= __('Buildings') ?></li>
+        <li><?= $this->Html->link('View All Buildings', ['controller'=>'buildings']); ?> </li>
+
+        <li class="heading"><?= __('Floors') ?></li>
+        <li><?= $this->Html->link('View All Floors', ['controller'=>'floors']); ?> </li>
+
+         <li class="heading"><?= __('Rooms') ?></li>
+         <li><?= $this->Html->link('View All Rooms', ['controller'=>'rooms']); ?> </li>
 
 
 		<li class="heading"><?= __('Room Maps') ?></li>
