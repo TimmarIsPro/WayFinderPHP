@@ -59,7 +59,8 @@ class AppController extends Controller
             'fields' => ['username' => 'username', 'password'=>'password']
         ]
     ],
-        'storage'=>'Session'
+        'storage'=>'Session',
+            'authorize' => array('Controller')
     ]);
 
         /*
@@ -78,5 +79,13 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
         $this->set('auth', $this->request->session()->read('Auth'));
+    }
+
+    public function isAuthorized($user) {
+        //admin can access everything
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+    return false;
     }
 }
