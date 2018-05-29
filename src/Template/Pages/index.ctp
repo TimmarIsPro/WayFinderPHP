@@ -54,9 +54,16 @@ $cakeDescription = 'TAFE WayFinder';
 
         <?php if ($auth) { ?>
 
-        <li class="heading"><?= __('Events') ?></li>
-		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
-        <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
+                <li class="heading"><?= __('Events') ?></li>
+        		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
+                <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
+
+        <?php } ?>
+
+
+        <?php if ($auth['User']['role'] === 'admin') { ?>
+
+
 
         <li class="heading"><?= __('Campuses') ?></li>
         <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
@@ -78,6 +85,8 @@ $cakeDescription = 'TAFE WayFinder';
 		<li><?= $this->Html->link('Add New User', ['controller'=>'users', 'action'=>'add']); ?> </li>
 		<li><?= $this->Html->link('View Users', ['controller'=>'users']); ?> </li>
     </ul>
+
+    <?php } else { ?>
 
     <?php } ?>
 
