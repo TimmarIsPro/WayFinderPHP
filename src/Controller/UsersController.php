@@ -20,11 +20,12 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|void
      */
 
+    /*
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow('login');
+        $this->Auth->allow('login', 'logout');
     }
-
+*/
     public function index()
     {
         $users = $this->paginate($this->Users);
@@ -153,6 +154,20 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
+    }
+
+
+    public function isAuthorized($user)
+    {
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+
+        if (in_array($this->request->getParam('action'), ['logout'])) {
+            return true;
+        }
+        return false;
+
     }
 
 }
