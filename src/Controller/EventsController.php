@@ -105,21 +105,12 @@ class EventsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function isAuthorized($user) {
-        //Both admin and appuser can add events
-       if ($this->request->getParam('action') === 'add') {
-    return true;
+    public function isAuthorized($user)
+    {
+        if (in_array($this->request->getParam('action'), ['add','delete','edit','view','index'])) {
+            return true;
         }
-        if (in_array($this->request->getParam('action'), ['edit', 'delete'])) {
-           if ($user->role != admin)
-           {
-               return false;
-           }
-           else {
-               return true;
-           }
-        }
-
+        return false;
 
     }
 }

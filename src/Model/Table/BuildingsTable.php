@@ -33,6 +33,9 @@ class BuildingsTable extends Table
         $this->setTable('buildings');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('campuses');
+        $this->hasMany('floors');
     }
 
     /**

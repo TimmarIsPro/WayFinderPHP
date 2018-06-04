@@ -37,6 +37,8 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('events');
     }
 
     /**
@@ -81,5 +83,9 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']));
 
         return $rules;
+    }
+
+    public function isOwnedBy($user_Id) {
+        return $this->exists(['id' => $user_Id]);
     }
 }

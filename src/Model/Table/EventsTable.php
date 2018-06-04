@@ -37,6 +37,9 @@ class EventsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('campusevents');
+        $this->belongsTo('users');
     }
 
     /**

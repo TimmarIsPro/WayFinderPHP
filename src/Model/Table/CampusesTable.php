@@ -33,6 +33,11 @@ class CampusesTable extends Table
         $this->setTable('campuses');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('campusevents')
+            ->setForeignKey('campusId');
+        $this->hasMany('buildings')
+            ->setForeignKey('id');
     }
 
     /**

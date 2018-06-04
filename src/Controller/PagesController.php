@@ -68,4 +68,13 @@ class PagesController extends AppController
     }
 
 
+    public function isAuthorized($user)
+    {
+        if (in_array($this->request->getParam('action'), ['display'])) {
+            return true;
+        }
+        return false;
+
+    }
+
 }
