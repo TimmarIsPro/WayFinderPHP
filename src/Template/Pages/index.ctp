@@ -37,60 +37,60 @@ $cakeDescription = 'TAFE WayFinder';
 	    <?= $this->Flash->render() ?>
 
 	<nav class="large-3 medium-4 columns" id="actions-sidebar">
-		<ul class="side-nav">
-		<?php if ($auth) { ?>
+    		<ul class="side-nav">
+    		<?php if ($auth) { ?>
 
-                        <li>
-                        <?php echo $this->Html->link($auth['User']['username'], ['controller'=>'users', 'action'=>'view', $auth['User']['id']]); ?>
-                        </a></li>
-                        <li>
-                            <?php echo $this->Html->link('Log out', ['controller'=>'users', 'action'=>'logout']); ?>
-                        </li>
-                        <?php } else { ?>
                             <li>
-                                <?php echo $this->Html->link('Log in', ['controller'=>'users', 'action'=>'login']); ?>
+                            <?php echo $this->Html->link($auth['User']['username'], ['controller'=>'users', 'action'=>'view', $auth['User']['id']]); ?>
+                            </a></li>
+                            <li>
+                                <?php echo $this->Html->link('Log out', ['controller'=>'users', 'action'=>'logout']); ?>
                             </li>
-                        <?php } ?>
+                            <?php } else { ?>
+                                <li>
+                                    <?php echo $this->Html->link('Log in', ['controller'=>'users', 'action'=>'login']); ?>
+                                </li>
+                            <?php } ?>
 
-        <?php if ($auth) { ?>
+            <?php if (($auth['User']['role'] === 'admin') || ($auth['User']['role'] === 'eventmgr')) { ?>
 
-                <li class="heading"><?= __('Events') ?></li>
-        		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
-                <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
+                    <li class="heading"><?= __('Events') ?></li>
+            		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
+                    <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
+
+            <?php } ?>
+
+
+            <?php if ($auth['User']['role'] === 'admin') { ?>
+
+
+
+            <li class="heading"><?= __('Campuses') ?></li>
+            <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
+
+            <li class="heading"><?= __('Buildings') ?></li>
+            <li><?= $this->Html->link('View All Buildings', ['controller'=>'buildings']); ?> </li>
+
+            <li class="heading"><?= __('Floors') ?></li>
+            <li><?= $this->Html->link('View All Floors', ['controller'=>'floors']); ?> </li>
+
+             <li class="heading"><?= __('Rooms') ?></li>
+             <li><?= $this->Html->link('View All Rooms', ['controller'=>'rooms']); ?> </li>
+
+
+    		<li class="heading"><?= __('Room Maps') ?></li>
+    		<li><?= $this->Html->link('View Maps', ['controller'=>'maps']); ?></li>
+
+    		<li class="heading"><?= __('Admin') ?></li>
+    		<li><?= $this->Html->link('Add New User', ['controller'=>'users', 'action'=>'add']); ?> </li>
+    		<li><?= $this->Html->link('View Users', ['controller'=>'users']); ?> </li>
+        </ul>
+
+        <?php } else { ?>
 
         <?php } ?>
 
-
-        <?php if ($auth['User']['role'] === 'admin') { ?>
-
-
-
-        <li class="heading"><?= __('Campuses') ?></li>
-        <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
-
-        <li class="heading"><?= __('Buildings') ?></li>
-        <li><?= $this->Html->link('View All Buildings', ['controller'=>'buildings']); ?> </li>
-
-        <li class="heading"><?= __('Floors') ?></li>
-        <li><?= $this->Html->link('View All Floors', ['controller'=>'floors']); ?> </li>
-
-         <li class="heading"><?= __('Rooms') ?></li>
-         <li><?= $this->Html->link('View All Rooms', ['controller'=>'rooms']); ?> </li>
-
-
-		<li class="heading"><?= __('Room Maps') ?></li>
-		<li><?= $this->Html->link('View Maps', ['controller'=>'maps']); ?></li>
-
-		<li class="heading"><?= __('Admin') ?></li>
-		<li><?= $this->Html->link('Add New User', ['controller'=>'users', 'action'=>'add']); ?> </li>
-		<li><?= $this->Html->link('View Users', ['controller'=>'users']); ?> </li>
-    </ul>
-
-    <?php } else { ?>
-
-    <?php } ?>
-
-	</nav>
+    	</nav>
 
 
 

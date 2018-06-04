@@ -166,6 +166,13 @@ class UsersController extends AppController
         if (in_array($this->request->getParam('action'), ['logout'])) {
             return true;
         }
+
+        if (in_array($this->request->getParam('action'), ['view', 'edit'])) {
+            $user_Id = (int)$this->request->getParam('pass.0');
+            if ($this->Users->isOwnedBy($user_Id, $user['id'])) {
+                return true;
+            }
+        }
         return false;
 
     }

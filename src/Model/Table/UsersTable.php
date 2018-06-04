@@ -82,4 +82,8 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    public function isOwnedBy($user_Id) {
+        return $this->exists(['id' => $user_Id]);
+    }
 }
