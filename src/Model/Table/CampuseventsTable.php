@@ -33,6 +33,9 @@ class CampuseventsTable extends Table
         $this->setTable('campusevents');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('campuses');
+        $this->belongsTo('events');
     }
 
     /**

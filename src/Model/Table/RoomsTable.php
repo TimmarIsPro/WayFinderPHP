@@ -33,6 +33,8 @@ class RoomsTable extends Table
         $this->setTable('rooms');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('floors');
     }
 
     /**
