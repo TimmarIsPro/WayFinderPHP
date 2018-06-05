@@ -39,6 +39,8 @@ class FloorsController extends AppController
         ]);
 
         $this->set('floor', $floor);
+
+        $floor = $this->Floors->get($id, ['contain' => 'Maps']);
     }
 
     /**

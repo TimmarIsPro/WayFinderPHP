@@ -46,6 +46,8 @@ class MapsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
+
+
     public function add()
     {
         $map = $this->Maps->newEntity();
@@ -61,6 +63,33 @@ class MapsController extends AppController
         $this->set(compact('map'));
     }
 
+
+    /*
+    public function add($map_Id = null) {
+        if (is_null($map_Id)) {
+            $this->redirect(['controller' => 'Maps', 'action' => 'index']);
+        }
+        $map = $this->Maps->newEntity();
+        if ($this->request->is('post')) {
+            $file = $this->request->data['file'];
+            $file['name'] = time() . '-' . str_replace(' ', '_', $file['name']); //timestamping
+            if (move_uploaded_file($file['tmp_name'], WWW_ROOT . 'files/' . $file['name'])) {
+                $this->request->data['filename'] = $file['name'];
+                $map = $this->Maps->patchEntity($map, $this->request->data);
+                if ($this->Maps->save($map)) {
+                    $this->Flash->success(__('The document has been saved.'));
+                    return $this->redirect(['controller' => 'Campuses', 'action' => 'view', $map->campus_Id]);
+                } else {
+                    $this->Flash->error(__('The document could not be saved. Try Again'));
+                }
+            } else {
+                $this->Flash->error(__('Could not upload the file.'));
+            }
+        }
+
+    }
+    */
+
     /**
      * Edit method
      *
@@ -68,6 +97,8 @@ class MapsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
+
+
     public function edit($id = null)
     {
         $map = $this->Maps->get($id, [
@@ -84,6 +115,27 @@ class MapsController extends AppController
         }
         $this->set(compact('map'));
     }
+
+/*
+    public function edit($id = null)
+    {
+        $map = $this->Maps->get($id);
+        if ($this->request_>is(['patch', 'post', 'put'])) {
+            $file = $this->request->data['file'];
+            if ($file['name'] != '' && move_uploaded_file($file['tmp_name'], WWW_ROOT . 'files/' . $file['name'])) {
+                $this->request->data['filename'] = $file['name'];
+            }
+            $map = $this->Maps->patchEntity($map, $this->request->data);
+            if ($this->Maps->save($map)) {
+                $this->Flash->success(__('The document has been saved'));
+                return $this->redirect(['controller' => 'Maps', 'action' => 'view', $map->campus_Id]);
+            } else {
+                $this->Flash->error(__('The document could not be saved. Please, try again.'));
+            }
+        }
+
+    }
+*/
 
     /**
      * Delete method
@@ -103,5 +155,13 @@ class MapsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function isAuthorized($user) {
+        //only admin can add and edit maps
+        if ($user['role'] == 'admin') {
+            return true;
+        }
+        return false;
     }
 }

@@ -36,6 +36,8 @@ class FloorsTable extends Table
 
         $this->belongsTo('buildings');
         $this->hasMany('rooms');
+
+        $this->hasOne('Maps');
     }
 
     /**

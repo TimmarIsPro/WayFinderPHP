@@ -38,6 +38,8 @@ class CampusesTable extends Table
             ->setForeignKey('campusId');
         $this->hasMany('buildings')
             ->setForeignKey('id');
+
+        $this->hasOne('Maps');
     }
 
     /**

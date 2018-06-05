@@ -37,6 +37,9 @@ class MapsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Campuses');
+        $this->belongsTo('Floors');
     }
 
     /**
@@ -54,7 +57,7 @@ class MapsTable extends Table
         $validator
             ->scalar('filename')
             ->maxLength('filename', 255)
-            ->allowEmpty('filename');
+            ->notEmpty('filename');
 
         $validator
             ->scalar('description')
@@ -63,4 +66,6 @@ class MapsTable extends Table
 
         return $validator;
     }
+
+
 }
