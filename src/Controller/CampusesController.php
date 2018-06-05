@@ -13,6 +13,8 @@ use App\Controller\AppController;
 class CampusesController extends AppController
 {
 
+
+
     /**
      * Index method
      *
@@ -39,6 +41,8 @@ class CampusesController extends AppController
         ]);
 
         $this->set('campus', $campus);
+
+        $campus = $this->Campuses->get($id, ['contain' => 'Maps']);
     }
 
     /**
@@ -104,4 +108,8 @@ class CampusesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+
+
 }

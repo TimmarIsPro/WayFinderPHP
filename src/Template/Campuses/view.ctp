@@ -38,3 +38,27 @@
         </tr>
     </table>
 </div>
+
+<div class="related">
+    <?php echo $this->Html->link(__('New Map'), ['controller' => 'Maps', 'action' => 'add', $map->id],  ['class' => 'right']) ?>
+    <h3><?php echo __('Maps') ?></h3>
+    <?php if (!empty($campus->maps)): ?>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th scope="col"><?php echo __('Filename') ?>
+            <th scope="col"><?php echo __('Description') ?>
+            <th scope="col"> class="actions"><?php echo __('Actions') ?>
+        </tr>
+        <?php foreach($campus->maps as $maps): ?>
+        <tr>
+            <td><?php echo $this->Html->link($maps->name, '/files/' . $maps->filename) ?>
+            <td><?php echo h($maps->description) ?></td>
+            <td class="actions">
+                <?php echo $this->Html->link(__('View'), '/files/' . $maps->filename) ?> |
+                <?php echo $this->Html->link(__('Edit'), ['controller' => 'Maps', 'action' => 'edit', $maps->id]) ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    </php endif; ?>
+</div>
