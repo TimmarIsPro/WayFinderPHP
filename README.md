@@ -7,7 +7,5 @@ To Complete:
     
     File Upload
     
-    API
-    
     Foundation/Styling
     
