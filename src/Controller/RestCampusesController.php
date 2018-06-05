@@ -37,19 +37,8 @@ class ClientController extends Controller
         $this->set('_serialize', ['Campuses']);
     }
 
-    public function requestindex() {
-        $link = "http://" . $_SERVER['HTTP_HOST'] . $this->webroot.'rest_campuses.json';
 
-        $data = null;
-        $httpSocket = new HttpSocket();
-        $response = $httpSocket->get($link, $data);
-        $this->set('response_code', $response->code);
-        $this->set('response_body', $response->body);
-
-        $this-> render('/Client/request_response');
-    }
-
-    public function request_view($id)
+    public function view($id)
     {
         $campus = $this->Campuses->get($id, ['contain' => []
         ]);
@@ -58,7 +47,7 @@ class ClientController extends Controller
         $this->set('_serialize', ['campus']);
     }
 
-    public function request_edit($id)
+    public function edit($id)
     {
         $campus = $this->Campuses->get($id, [
             'contain' => []
@@ -78,7 +67,7 @@ class ClientController extends Controller
         $this->set('_serialize', ['res']);
     }
 
-    public function request_add()
+    public function add()
     {
         $res = array();
         $campus = $this->Campuses->newEntity();
@@ -96,7 +85,7 @@ class ClientController extends Controller
         $this->set('_serialize', ['res']);
     }
 
-    public function request_delete($id)
+    public function delete($id)
     {
         $res = array();
         $this->request->allowMethod(['post','delete']);
@@ -111,4 +100,7 @@ class ClientController extends Controller
         $this->set(compact('res'));
         $this->set('_serialize', ['res']);
     }
+
+
+
 }
