@@ -47,9 +47,7 @@ $cakeDescription = 'TAFE WayFinder';
 
     <h3>Welcome to WayFinder Homepage</h3>
 
-    <div>
-        <h3>Some sorta table API thing goes here</h3>
-    </div>
+
 
 
     <div class="container clearfix">
