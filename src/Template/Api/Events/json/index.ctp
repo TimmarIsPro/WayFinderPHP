@@ -1,6 +1,1 @@
-
-
 <?= json_encode($events) ?>
-
-
-
