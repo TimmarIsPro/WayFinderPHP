@@ -12,7 +12,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller\Api;
+namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
@@ -43,27 +43,26 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-/*
+
         $this->loadComponent('Auth', [
-            'storage' => 'Memory',
-            'authenticate' => [
-                'Form' => [
-                    'scope' => ['Users.active' => 1]
-                ],
-                'ADmad/JwtAuth.Jwt' => [
-                    'parameter' => 'token',
-                    'userModel' => 'Users',
-                    'scope' => ['Users.active' => 1],
-                    'fields' => [
-                        'username' => 'id'
-                    ],
-                    'queryDatasource' => true
-                ]
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login',
             ],
-            'unauthorizedRedirect' => false,
-            'checkAuthIn' => 'Controller.initialize'
-        ]);
-*/
+        'logoutRedirect'=>[
+            'controller'=>'Users',
+            'action'=>'login'
+        ],
+        'authError'=> 'Not Allowed.',
+        'authenticate' => [
+            'Form' => [
+            'fields' => ['username' => 'username', 'password'=>'password']
+        ]
+    ],
+        'storage'=>'Session',
+            'authorize' => array('Controller')
+    ]);
+
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
@@ -72,14 +71,21 @@ class AppController extends Controller
         //$this->loadComponent('Csrf');
     }
 
-/*
+
     public function beforeRender(Event $event)
     {
         if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])) {
+        in_array($this->response->type(), ['application/json', 'application/xml'])) {
             $this->set('_serialize', true);
         }
         $this->set('auth', $this->request->session()->read('Auth'));
     }
-*/
+
+    public function isAuthorized($user) {
+        //admin can access everything
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+    return false;
+    }
 }
