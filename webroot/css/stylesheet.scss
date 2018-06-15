@@ -1,0 +1,39 @@
+/*Index Page*/
+@import "scss/footer";
+@import "scss/body";
+@import "scss/header";
+
+#icon {
+  height: 36px;
+  width: 36px;
+}
+.error {
+  color: #d32723;
+  text-align: center;
+}
+.success {
+  text-align: center;
+}
+.image {
+  width: 100%;
+  height: 100%;
+}
+li {
+  list-style-type: none;
+  color: white;
+  text-align: center;
+}
+
+button {
+  background: #e2e2e2;
+  border: 0;
+  line-height: 2.5em;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1em;
+  outline: none;
+  text-decoration: none;
+  color: #666;
+  text-align: center;
+}
+
