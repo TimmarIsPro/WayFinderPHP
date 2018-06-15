@@ -52,4 +52,13 @@ class Application extends BaseApplication
 
         return $middlewareQueue;
     }
+
+    public function bootstrap()
+    {
+        //$this->addPlugin('admad/cakephp-jwt-auth');
+
+
+        parent::bootstrap();
+    }
+
 }
