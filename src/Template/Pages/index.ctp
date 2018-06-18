@@ -24,83 +24,68 @@ $cakeDescription = 'TAFE WayFinder';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+
     <?= $this->Html->meta('icon') ?>
-
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
+
 	    <?= $this->Flash->render() ?>
 
-	<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    		<ul class="side-nav">
-    		<?php if ($auth) { ?>
-
-                            <li>
-                            <?php echo $this->Html->link($auth['User']['username'], ['controller'=>'users', 'action'=>'view', $auth['User']['id']]); ?>
-                            </a></li>
-                            <li>
-                                <?php echo $this->Html->link('Log out', ['controller'=>'users', 'action'=>'logout']); ?>
-                            </li>
-                            <?php } else { ?>
-                                <li>
-                                    <?php echo $this->Html->link('Log in', ['controller'=>'users', 'action'=>'login']); ?>
-                                </li>
-                            <?php } ?>
-
-            <?php if (($auth['User']['role'] === 'admin') || ($auth['User']['role'] === 'eventmgr')) { ?>
-
-                    <li class="heading"><?= __('Events') ?></li>
-            		<li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
-                    <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?> </li>
-
-            <?php } ?>
-
-
-            <?php if ($auth['User']['role'] === 'admin') { ?>
-
-
-
-            <li class="heading"><?= __('Campuses') ?></li>
-            <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
-
-            <li class="heading"><?= __('Buildings') ?></li>
-            <li><?= $this->Html->link('View All Buildings', ['controller'=>'buildings']); ?> </li>
-
-            <li class="heading"><?= __('Floors') ?></li>
-            <li><?= $this->Html->link('View All Floors', ['controller'=>'floors']); ?> </li>
-
-             <li class="heading"><?= __('Rooms') ?></li>
-             <li><?= $this->Html->link('View All Rooms', ['controller'=>'rooms']); ?> </li>
-
-
-    		<li class="heading"><?= __('Room Maps') ?></li>
-    		<li><?= $this->Html->link('View Maps', ['controller'=>'maps']); ?></li>
-
-    		<li class="heading"><?= __('Admin') ?></li>
-    		<li><?= $this->Html->link('Add New User', ['controller'=>'users', 'action'=>'add']); ?> </li>
-    		<li><?= $this->Html->link('View Users', ['controller'=>'users']); ?> </li>
-        </ul>
-
-        <?php } else { ?>
-
+	<div class="grid-x large-10 medium-5 cell" id="actions-sidebar">
+		<ul class="side-nav">
+		<?php if ($auth) { ?>
+            <li>
+            <?php echo $this->Html->link($auth['User']['username'], ['controller'=>'users', 'action'=>'view', $auth['User']['id']]); ?>
+            </li>
+            <li>
+                <?php echo $this->Html->link('Log out', ['controller'=>'users', 'action'=>'logout']); ?>
+            </li>
+            <?php } else { ?>
+            <li>
+                <?php echo $this->Html->link('Log in', ['controller'=>'users', 'action'=>'login']); ?>
+            </li>
         <?php } ?>
 
-    	</nav>
+        <?php if ($auth) { ?>
+            <li class="heading"<?= __('Admin') ?></li>
+            <br>
+            <li class="heading"><?php echo $this->Html->image('User.png', array('id' => 'icon'));?>Users</li>
+            <li><?= $this->Html->link('Add New User', ['controller'=>'users', 'action'=>'add']); ?></li>
+            <li><?= $this->Html->link('View Users', ['controller'=>'users']); ?> </li>
 
 
+            <li class="heading"> <?php echo $this->Html->image('Events.png', array('id' => 'icon'));?><?= __(' Events') ?>
+		    <li><?= $this->Html->link('Add New Event', ['controller'=>'events', 'action'=>'add']); ?></li>
+        <li><?= $this->Html->link('View All Events', ['controller'=>'events']); ?></li>
 
-    <h3>Welcome to Admin Portal</h3>
+        <li class="heading"> <?php echo $this->Html->image('campus.png', array('id' => 'icon'));?><?= __(' Campuses') ?>
 
+        <li><?= $this->Html->link('View All Campuses', ['controller'=>'campuses']); ?> </li>
 
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
+        <li class="heading"><?php echo $this->Html->image('building.png', array('id' => 'icon'));?><?= __(' Buildings') ?>
+        <li><?= $this->Html->link('View All Buildings', ['controller'=>'buildings']); ?> </li>
+
+        <li class="heading"><?php echo $this->Html->image('floor.png', array('id' => 'icon'));?><?= __(' Floors') ?>
+        <li><?= $this->Html->link('View All Floors', ['controller'=>'floors']); ?> </li>
+
+        <li class="heading"><?php echo $this->Html->image('room.png', array('id' => 'icon'));?><?= __(' Rooms') ?>
+        <li><?= $this->Html->link('View All Rooms', ['controller'=>'rooms']); ?> </li>
+
+    		<li class="heading"><?php echo $this->Html->image('map.png', array('id' => 'icon'));?><?= __('Room Maps') ?>
+    		<li><?= $this->Html->link('View Maps', ['controller'=>'maps']); ?></li>
+
+        </ul>
+            <div class="grid-container large-10 medium-5 cell" id="body">
+                <h3>Welcome to Admin Portal</h3>
+                <div class="grid-x large-10 medium-1 cell" id="welcomebody">
+                    <a href="/pages/index">
+                        <?php echo $this->Html->image('pepe.jpg', array('class' => 'Logo'));?>
+                    </a>
+                  </div>
     </div>
-    <footer>
-    </footer>
+    <?php } ?>
 </body>
 </html>

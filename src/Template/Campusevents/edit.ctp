@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Campusevent $campusevent
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<div class="grid-x large-3 medium-4 cell" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
@@ -15,16 +15,17 @@
         ?></li>
         <li><?= $this->Html->link(__('List Campusevents'), ['action' => 'index']) ?></li>
     </ul>
-</nav>
-<div class="campusevents form large-9 medium-8 columns content">
-    <?= $this->Form->create($campusevent) ?>
-    <fieldset>
-        <legend><?= __('Edit Campusevent') ?></legend>
-        <?php
+    <div class="grid-container campusevents form large-9 medium-8 cell content" id="body">
+        <?= $this->Form->create($campusevent) ?>
+        <fieldset>
+            <legend><?= __('Edit Campusevent') ?></legend>
+            <?php
             echo $this->Form->control('eventId');
             echo $this->Form->control('campusId');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+            ?>
+        </fieldset>
+        <?= $this->Form->button(__('Submit')) ?>
+        <?= $this->Form->end() ?>
+    </div>
 </div>
+
