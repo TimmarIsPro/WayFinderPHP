@@ -81,10 +81,8 @@ $cakeDescription = 'TAFE WayFinder';
             <div class="grid-container large-10 medium-5 cell" id="body">
                 <h3>Welcome to Admin Portal</h3>
                 <div class="grid-x large-10 medium-1 cell" id="welcomebody">
-                    <a href="/pages/index">
-                        <?php echo $this->Html->image('pepe.jpg', array('class' => 'Logo'));?>
-                    </a>
-                  </div>
+                    
+                </div>
     </div>
     <?php } ?>
 </body>
