@@ -26,8 +26,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('app.css') ?>
+    <?= $this->Html->css('foundation.css') ?>
+    <?= $this->Html->css('stylesheet.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -38,31 +39,52 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!-- Header or something here -->
 
 
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-				<!-- Below this should be a direct link back to the homepage? -->
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area large-3 medium-4 columns">
+        <li class="name">
+            <!-- Below this should be a direct link back to the homepage? -->
 
-				<?php if ($auth) { ?>
-                    <h1><a href="/pages/index">Homepage</a></h1>
-                <?php } else { ?>
-                    <h1><a>WayFinder</a></h1>
-                <?php } ?>
+            <?php if ($auth) { ?>
+                <h1>
+                    <a href="/pages/index">
+                        <?php echo $this->Html->image('header.jpg', array('class' => 'Logo'));?>
+                    </a>
+                </h1>
 
+            <?php } else { ?>
+                <h1><a>WayFinder</a></h1>
+            <?php } ?>
 
-            </li>
+        </li>
+    </ul>
+    <div class="top-bar-section">
+        <ul class="right">
+            <!-- Topbar information? -->
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <!-- Topbar information? -->
-            </ul>
-        </div>
-    </nav>
+    </div>
+</nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
     <footer>
+      <div class="ecommerce-footer">
+ <div class="ecommerce-footer-links row">
+   <div class="small-12 medium-12 large-6 columns">
+     <div class="row ecommerce-footer-links-block">
+     </div>
+   </div>
+ </div>
+ <div class="ecommerce-footer-bottom-bar row">
+   <div class="small-12 medium-5 columns">
+     <div class="bottom-copyright">
+       <span>©2018 Company Name. All rights reserved.</span>
+     </div>
+   </div>
+ </div>
+</div>
     </footer>
+
+
 </body>
 </html>
